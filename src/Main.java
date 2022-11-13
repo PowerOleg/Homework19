@@ -1,3 +1,4 @@
+//отфильтровать через стрим не буквы
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -9,6 +10,11 @@ public class Main {
             int value = hashMap.get(ch);
             value++;
             hashMap.put(ch, value);
+    }
+    public static void print(Map<Character, Integer> hashMap) {
+        for (Map.Entry<Character, Integer> e : hashMap.entrySet()) {
+            System.out.println(e);
+        }
     }
 
     public static void main(String[] args) {
@@ -23,7 +29,12 @@ public class Main {
             if (!hashMap.containsKey(ch)) hashMap.put(ch, 1);
             else containsKey(hashMap, ch);
         }
+        hashMap.entrySet().stream().filter(n -> Character.isLetter(n.getKey()))/*.map(Map.Entry::getKey)*/.forEach(System.out::println);
 
+
+
+
+//        print(hashMap);
 
 
     }
