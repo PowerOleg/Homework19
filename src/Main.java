@@ -35,15 +35,12 @@ public class Main {
 
         List<Map.Entry<Character, Integer>> hashMap1 =
                 hashMap.entrySet().stream().filter(n -> Character.isLetter(n.getKey())).collect(Collectors.toList());
-        int min = Integer.MIN_VALUE;
-        int max = Integer.MAX_VALUE;
-        for (Map.Entry<Character, Integer> e : hashMap1) {
-//            if (e.getValue() > min) {
-//                min = e.getValue();
-//            }
-            System.out.println(e);
+            hashMap1.sort((o1, o2) -> o1.getValue() - o2.getValue());
+
+//            hashMap1.stream().forEach(System.out::println);
+            Map.Entry<Character, Integer> min = hashMap1.get(0);
+            Map.Entry<Character, Integer> max = hashMap1.get(hashMap1.size()-1);
 
 
-        }
     }
 }
